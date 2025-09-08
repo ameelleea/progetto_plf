@@ -9,16 +9,16 @@ main = do putStrLn "Inserisci l'insieme di numeri naturali separati da spazi:"
           putStrLn $ "Insieme privo di elementi duplicati: " ++ show insieme
           relazione <- acquisisci_relazione insieme
           putStrLn $ "Relazione priva di elementi duplicati: " ++ show relazione
-          putStr "Chiusura riflessiva di R:"
+          putStr "Chiusura riflessiva di R: "
           putStrLn $ show (riflessiva relazione)
-          putStr "Chiusura simmetrica di R:"
+          putStr "Chiusura simmetrica di R: "
           putStrLn $ show (simmetrica relazione)
-          putStr "Chiusura transitiva di R:"
+          putStr "Chiusura transitiva di R: "
           putStrLn $ show (transitiva relazione)
 
-{- L'azione di input/output acquisisci_relazione acquisisce la relazione da tastiera, verifica che sia valida sull'insieme
-   e la restituisce priva di eventuali duplicati:
-   -il suo unico argomento è l'insieme, precedentemente inserito, sul quale la relazione deve essere valida. -}
+{- L'azione di input/output acquisisci_relazione acquisisce la relazione da tastiera, 
+   verifica che sia valida sull'insieme e la restituisce priva di eventuali duplicati:
+   -il suo unico argomento è l'insieme sul quale la relazione deve essere valida. -}
 
 acquisisci_relazione :: [Int] -> IO [(Int, Int)]
 acquisisci_relazione insieme = do putStrLn "Inserisci le coppie separate da spazi (es 1,2 2,3):"
@@ -36,7 +36,8 @@ parse_coppia :: String -> (Int, Int)
 parse_coppia s = let [a,b] = map read (split_stringa (==',') s)
                  in (a,b)
 
-{- La funzione split_stringa spezza una stringa in sottostringhe, usando come separatore qualunque carattere soddisfi p:
+{- La funzione split_stringa spezza una stringa in sottostringhe, 
+   usando come separatore qualunque carattere soddisfi p:
    -il primo argomento è il predicato da soddisfare
    -il secondo argomento è la stringa da spezzare -}
 
