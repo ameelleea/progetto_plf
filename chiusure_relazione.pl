@@ -13,9 +13,9 @@ main :- write('Inserisci l\'insieme di numeri naturali tra parentesi quadre: '),
         transitiva(R, CT),
         format('Chiusura transitiva di R: ~w~n', [CT]).
 
-/* Il predicato acquisisci_relazione acquisisce la relazione da tastiera, verifica che sia valida sull'insieme
-   e la restituisce priva di eventuali duplicati:
-   -il primo argomento è l'insieme, precedentemente inserito, sul quale la relazione deve essere valida
+/* Il predicato acquisisci_relazione acquisisce la relazione da tastiera, 
+   verifica che sia valida sull'insieme e la restituisce priva di eventuali duplicati:
+   -il primo argomento è l'insieme sul quale la relazione deve essere valida
    .il secondo argomento è la relazione, priva di duplicati. */
 
 acquisisci_relazione(I, RU) :- write('Inserisci la relazione come lista di coppie (es [(1,2),(2,3)]): '), nl,
@@ -36,16 +36,16 @@ relazione_valida([(A,B)|T], I) :- member(A, I), member(B, I), relazione_valida(T
 
 
 /* il predicato riflessiva calcola la chiusura riflessiva di una relazione:
-   - il primo argomento è la relazione
-   - il secondo argomento è la chiusura riflessiva. */
+   -il primo argomento è la relazione
+   -il secondo argomento è la chiusura riflessiva. */
 
 riflessiva([], []).
 riflessiva(R, CR) :- findall((X,X), (member((A,B), R), (X=A; X=B)), CPR),
                      append(R, CPR, Temp), sort(Temp, CR).
 
 /* il predicato simmetrica calcola la chiusura simmetrica di una relazione, 
-   - il primo argomento è la relazione
-   - il secondo argomento è la chiusura simmetrica. */
+   -il primo argomento è la relazione
+   -il secondo argomento è la chiusura simmetrica.*/
 
 simmetrica([], []).
 simmetrica(R, CS) :- findall((B,A), (member((A,B), R), \+ member((B,A), R)), CPS),
@@ -53,7 +53,7 @@ simmetrica(R, CS) :- findall((B,A), (member((A,B), R), \+ member((B,A), R)), CPS
 
 /* il predicato transitiva calcola la chiusura transitiva di una relazione:
    -il primo argomento è la relazione
-   - il secondo argomento è la chiusura transitiva.*/
+   -il secondo argomento è la chiusura transitiva.*/
 
 transitiva([], []).
 transitiva(R, CT) :- findall((A,D), (member((A,B), R), member((B,D), R), \+ member((A,D), R)), Nuove),
